@@ -41,7 +41,7 @@ namespace node_ole {
 		ShowWindow(hwnd, SW_SHOWNORMAL);
 	}
 	int count = 0;
-	BOOL checkContinue(ULONG_PTR dwContinue) {
+	BOOL CALLBACK checkContinue(ULONG_PTR dwContinue) {
 		return TRUE;
 	}
 	LRESULT CALLBACK oleWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {

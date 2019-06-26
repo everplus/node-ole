@@ -104,7 +104,6 @@ namespace node_ole {
 		WORD wFlags, DISPPARAMS * pDispParams, VARIANT * pVarResult,
 		EXCEPINFO * pExcepInfo, UINT * puArgErr
 	) {
-		HRESULT result;
 		auto found = funcInfoMap.find(dispIdMember);
 		if (found == funcInfoMap.end()) return DISP_E_MEMBERNOTFOUND;
 		FuncInfo * funcInfo = &(found->second);
@@ -118,7 +117,7 @@ namespace node_ole {
 		DISPPARAMS * params = new DISPPARAMS();
 		params->cArgs = pDispParams->cArgs;
 		VARIANTARG * variants = new VARIANTARG[pDispParams->cArgs];
-		for (int i = 0; i < pDispParams->cArgs; ++i) {
+		for (uint32_t i = 0; i < pDispParams->cArgs; ++i) {
 			copyVariant(&(pDispParams->rgvarg[i]), &(variants[i]));
 			parseVariantTypeInfo(env, &(variants[i]));
 		}
